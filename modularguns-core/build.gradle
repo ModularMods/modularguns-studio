@@ -1,0 +1,15 @@
+plugins {
+    id 'application'
+}
+
+def module_name = 'modularguns-core'
+def module_version = System.getenv('CI_COMMIT_TAG') ?: '0.0.1f'
+
+group = 'net.modularguns.core'
+version = '1.0-SNAPSHOT'
+
+tasks.named('run', JavaExec) {
+    group = 'application'
+    mainClass = 'Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

@@ -1,0 +1,4 @@
+rootProject.name = "modularguns"
+
+include("modularguns-core")
+include("modularguns-studio")

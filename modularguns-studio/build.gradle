@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+def module_name = 'modularguns-studio'
+def module_version = System.getenv('CI_COMMIT_TAG') ?: '0.0.1f'
+
+group = 'net.modularguns.studio'
+version = '1.0-SNAPSHOT'
+
+ext {
+    lwjglVersion = "3.3.2"
+    lwjglNatives = "natives-windows"
+    imguiVersion = "1.86.10"
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation "com.google.guava:guava:31.1-jre"
+
+    // lwjgl
+    // https://www.lwjgl.org/customize
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-opengl"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+
+    // imgui-java
+    // https://github.com/SpaiR/imgui-java#binding
+    implementation "io.github.spair:imgui-java-binding:$imguiVersion"
+    implementation "io.github.spair:imgui-java-lwjgl3:$imguiVersion"
+    implementation "io.github.spair:imgui-java-natives-windows:$imguiVersion"
+}
+
+tasks.named('run', JavaExec) {
+    group = 'application'
+    mainClass = 'net.modularguns.studio.App'
+    classpath = sourceSets.main.runtimeClasspath
+}
