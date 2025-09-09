@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+.idea/*
+modularguns-core/.idea/*
+modularguns-studio/.idea/*
