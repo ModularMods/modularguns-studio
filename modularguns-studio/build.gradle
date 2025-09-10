@@ -10,9 +10,9 @@ group = 'net.modularguns.studio'
 version = '1.0-SNAPSHOT'
 
 ext {
-    lwjglVersion = "3.3.2"
+    lwjglVersion = "3.3.3"
     lwjglNatives = "natives-windows"
-    imguiVersion = "1.86.10"
+    imguiVersion = "1.90.0"
 }
 
 dependencies {
@@ -38,6 +38,6 @@ dependencies {
 
 tasks.named('run', JavaExec) {
     group = 'application'
-    mainClass = 'net.modularguns.studio.App'
+    mainClass = 'net.modularguns.studio.ModularGunsStudio'
     classpath = sourceSets.main.runtimeClasspath
 }
